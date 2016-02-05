@@ -1,0 +1,33 @@
+{
+  "name": "rogain-config",
+  "version": "0.1.0",
+  "description": "Rogain configuration utility",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel lib -d dist",
+    "develop": "babel lib -w -d dist",
+    "test": "tape test/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krambuhl/rogain-config.git"
+  },
+  "keywords": [
+    "rogain",
+    "templating",
+    "registry",
+    "config"
+  ],
+  "author": "Evan Krambuhl <thekrambuhl@gmail.com> (http://stumptownbear.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/krambuhl/rogain-config/issues"
+  },
+  "homepage": "https://github.com/krambuhl/rogain-config",
+  "devDependencies": {
+    "babel-cli": "^6.4.5",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-preset-es2015": "^6.3.13",
+    "tape": "^4.4.0"
+  }
+}
