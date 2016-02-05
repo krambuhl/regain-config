@@ -1,4 +1,8 @@
-# Rogain Config
+# rogain-config
+
+Use to configure module required by rogain templating tools.
+
+## Config
 
 The Config class creates a set of `Registry` instances for managing the __components__, __helpers__, and __filters__ that are used by Rogain tools.
 
@@ -11,12 +15,21 @@ config.components.register({
     Button: require('./components/Button.json'),
     Form: require('./components/Form.json')
 });
+
 config.helpers.register('If', require('./helpers/If'));
 config.filters.register('uppercase', require('./filters/uppercase'));
 ```
 
+### get(type)
 
-# Registry
+Returns a plain object representing the Config instance.  Optional type argument can be passed to get a specific config registry.
+
+```js
+config.get() // => { components: {}, helpers: { ... }, filters: {}}
+config.get('helpers') // => { Empty: function() { ... } }
+```
+
+## Registry
 
 The Registry class creates a dictonary for managing modules.
 
@@ -26,9 +39,9 @@ helpers.register('If', require('./helpers/If'));
 helpers.unregister('If');
 ```
 
-### get([name])
+### get(name)
 
-gets selected registry data. passing a name will return the matching module or undefined if not found. If called with no arguments get will return all modules in object format.
+gets selected registry data. passing a name will return the matching module or undefined if not found. If called with no arguments `get` will return all modules as a plain object.
 
 ```js
 helpers.get('If') // => module
@@ -55,3 +68,16 @@ helpers.register({
 ```js
 helpers.unregister('Repeat');
 ```
+
+
+## Install 
+
+With [npm](https://www.npmjs.com) do:
+
+```
+npm install rogain-config
+```
+
+## License
+
+MIT
