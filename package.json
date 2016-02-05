@@ -1,12 +1,11 @@
 {
   "name": "rogain-config",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Rogain configuration utility",
   "main": "dist/index.js",
   "scripts": {
     "build": "babel lib -d dist",
     "develop": "babel lib -w -d dist",
-    "prepublish": "npm run build",
     "test": "tape test/*.test.js"
   },
   "repository": {
