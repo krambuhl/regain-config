@@ -28,58 +28,18 @@ config.get() // => { components: { }, filters: { } }
 config.get('components') // => { Button: { ... }, Form: { ... } }
 ```
 
-## Registry
+### registerComponent(name, component)
 
-The Registry class creates a dictonary for managing modules.
+Registers component. Sugar for `config.components.register`.
 
-```js
-var components = new Registry()
+### unregisterComponent(name)
 
-components.register('If', require('./components/helpers/If'));
-components.register('Heading', require('./components/Heading'));
+Unregisters component. Sugar for `config.components.unregister`.
 
-components.unregister('If');
-```
+### registerFilter(name, filter)
 
-### get(name)
+Registers filter. Sugar for `config.filters.register`.
 
-gets selected registry data. passing a name will return the matching module or undefined if not found. If called with no arguments `get` will return all modules as a plain object.
+### unregisterFilter(name)
 
-```js
-components.get('If') // => module
-components.get() // => { name: module }
-```
-
-### register(name, module)
-
-```js
-components.register('Repeat', require('./components/helpers/Repeat'));
-```
-
-### register(modules)
-
-```js
-components.register({
-    Pass: require('./components/helpers/Pass'),
-    Fail: require('./components/helpers/Fail')
-})
-```
-
-### unregister(name)
-
-```js
-components.unregister('Repeat');
-```
-
-
-## Install 
-
-With [npm](https://www.npmjs.com) do:
-
-```
-npm install rogain-config
-```
-
-## License
-
-MIT
+Unregisters filter. Sugar for `config.filters.unregister`.
