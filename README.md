@@ -4,7 +4,7 @@ Use to configure module required by rogain templating tools.
 
 ## Config
 
-The Config class creates a set of `Registry` instances for managing the __components__, __helpers__, and __filters__ that are used by Rogain tools.
+The Config class creates a set of `Registry` instances for managing the __components__ and __filters__ that are used by Rogain tools.
 
 ```js
 // create a config 
@@ -16,7 +16,6 @@ config.components.register({
     Form: require('./components/Form.json')
 });
 
-config.helpers.register('If', require('./helpers/If'));
 config.filters.register('uppercase', require('./filters/uppercase'));
 ```
 
@@ -25,8 +24,8 @@ config.filters.register('uppercase', require('./filters/uppercase'));
 Returns a plain object representing the Config instance.  Optional type argument can be passed to get a specific config registry.
 
 ```js
-config.get() // => { components: {}, helpers: { ... }, filters: {}}
-config.get('helpers') // => { Empty: function() { ... } }
+config.get() // => { components: { }, filters: { } }
+config.get('components') // => { Button: { ... }, Form: { ... } }
 ```
 
 ## Registry
@@ -34,9 +33,12 @@ config.get('helpers') // => { Empty: function() { ... } }
 The Registry class creates a dictonary for managing modules.
 
 ```js
-var helpers = new Registry()
-helpers.register('If', require('./helpers/If'));
-helpers.unregister('If');
+var components = new Registry()
+
+components.register('If', require('./components/helpers/If'));
+components.register('Heading', require('./components/Heading'));
+
+components.unregister('If');
 ```
 
 ### get(name)
@@ -44,29 +46,29 @@ helpers.unregister('If');
 gets selected registry data. passing a name will return the matching module or undefined if not found. If called with no arguments `get` will return all modules as a plain object.
 
 ```js
-helpers.get('If') // => module
-helpers.get() // => { name: module }
+components.get('If') // => module
+components.get() // => { name: module }
 ```
 
 ### register(name, module)
 
 ```js
-helpers.register('Repeat', require('./helpers/Repeat'));
+components.register('Repeat', require('./components/helpers/Repeat'));
 ```
 
 ### register(modules)
 
 ```js
-helpers.register({
-    Pass: require('./helpers/pass'),
-    Fail: require('./helpers/fail'),
+components.register({
+    Pass: require('./components/helpers/Pass'),
+    Fail: require('./components/helpers/Fail')
 })
 ```
 
 ### unregister(name)
 
 ```js
-helpers.unregister('Repeat');
+components.unregister('Repeat');
 ```
 
 
