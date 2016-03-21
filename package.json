@@ -1,6 +1,6 @@
 {
   "name": "rogain-config",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Rogain configuration utility",
   "main": "dist/index.js",
   "scripts": {
